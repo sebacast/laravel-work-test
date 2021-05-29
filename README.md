@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## ¡Bienvenid@s a mi repositorio!
+# ¡Bienvenid@s a mi repositorio!
 ![Home Sitio Web](./doc-img/doc-img1.png)
 
 ### Introduccion
@@ -19,7 +19,40 @@ favoritos (Favorites), asi como visualizar los favoritos de otros usuarios.
 La vista Favorites trae los sitios favoritos de todos los usuarios. Para el buscador y la paginación use la libreria JS Datatables. 
 https://datatables.net/
 
-Los usuario puedes ver todos los favorites, asi como el nombre del Usuario que agrego ese favorito, pero solo el dueño del favorito puede modificar o eliminarlos.
+Los usuario pueden ver todos los favoritos, asi como el nombre del usuario que agrego ese favorito, pero solo el dueño del favorito puede modificarlo o eliminarlo.
+
+A nivel de vista, el ocultamiento del boton para los no dueños lo trabaje con un simple if en el archivo blade
+
+```php
+@if (Auth::user()->id == $favorite->user_id)
+    <td class="border px-4 py-2">
+        <a href="{{ route('favorites.show', $favorite) }} "
+        class="bg-blue-500 text-white font-bold px-4 py-2 rounded-md ">Show</a>
+    </td>
+    <td class="border px-4 py-2">
+        <a href="{{ route('favorites.edit', $favorite) }}"
+        class="bg-blue-500 text-white font-bold px-4 py-2 rounded-md ">
+        Edit
+        </a>
+    </td>
+    <td class="border px-4 py-2">
+
+        <form action="{{ route('favorites.destroy', $favorite) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <input type="submit" value="Delete"
+            class="bg-red-500 text-white font-bold px-4 py-2 rounded-md">
+        </form>
+    </td>
+@else
+    <td class="border px-4 py-2"></td>
+    <td class="border px-4 py-2"></td>
+    <td class="border px-4 py-2"></td>
+@endif
+```
+
+#### Favorites Create
+
 
 ## License
 
