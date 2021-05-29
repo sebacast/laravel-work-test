@@ -103,7 +103,7 @@ class FavoriteController extends Controller
     public function destroy(Favorite $favorite)
     {
         $this->authorize('pass',$favorite);
-        $favorite->delete();
+        $favorite->delete();//softDelete
         return redirect()->route('favorites.index');
     }
 }

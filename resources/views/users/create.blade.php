@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <a href="{{route('users.index')}} ">User</a>
+            <a href="{{route('users.index')}} ">Users</a>
         </h2>
     </x-slot>
 
@@ -34,8 +34,6 @@
                             <input class="form-input w-full rounded-md shadow-sm" type="password" name="password_confirmation[]" required>
                         </div>
                     </div>
-                    <hr class="my-4">
-                    
                 </form>
             </div>
         </div>

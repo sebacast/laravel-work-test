@@ -27,7 +27,7 @@
                     @method('PUT')
                     <input class="col-span-3 form-input w-full rounded-md shadow-sm" type="text" name="url"
                         value="{{ $favorite->url }} " required>
-                    <input type="submit" value="Change Email"
+                    <input type="submit" value="Change Url"
                         class="col-span-1 bg-blue-500 text-white font-bold px-4 py-2 rounded-md ">
                 </form>
 

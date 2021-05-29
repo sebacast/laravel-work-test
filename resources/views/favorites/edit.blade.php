@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
-                <form action="{{ route('favorites.update', $favorite) }}" method="POST" class="max-w-md">
+                <form action="{{ route('favorites.update', $favorite) }}" method="POST" class="max-w-5xl mx-auto">
                     
 
                     <label class="block font-medium text-sm text-gray-700">Name</label>
