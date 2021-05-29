@@ -1,0 +1,8 @@
+button#close-menu-button, nav#sidebar-menu {
+    display: none;
+}
+nav#sidebar-menu{
+    position: relative;
+    float: left;
+    height: 100vh;
+}
