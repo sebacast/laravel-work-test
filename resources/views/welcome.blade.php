@@ -12,7 +12,7 @@
             </div>
             <div class="flex">
                 <x-icons.astronaut />
-                <x-icons.astronaut2 />
+            
             </div>
 
         </div>

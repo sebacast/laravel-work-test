@@ -1,4 +1,4 @@
-<svg version="1.1" class="lg:w-2/4 md:w-full sm:w-screen self-start" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+<svg version="1.1" class="lg:w-2/4 md:w-full sm:w-screen self-start mx-auto" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 1332.041 1650.737" enable-background="new 0 0 1332.041 1650.737" xml:space="preserve">
 <g>
 	<path opacity="0.85" enable-background="new    " d="M317.95,25.368c0.132,0.144,0.392,0.432,0.52,0.58
