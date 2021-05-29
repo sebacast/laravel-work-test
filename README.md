@@ -10,11 +10,11 @@
 # ¡Bienvenid@s a mi repositorio!
 ![Home Sitio Web](./doc-img/doc-img1.png)
 
-### Introduccion
+## Introduccion
 El proyecto consiste en un sistema que permite a usuarios agregar y administrar sus sitios
 favoritos (Favorites), asi como visualizar los favoritos de otros usuarios.
 
-### Favorites
+## Favorites
 ![Favorites](./doc-img/doc-img2.gif)
 La vista Favorites trae los sitios favoritos de todos los usuarios. Para el buscador y la paginación use la libreria JS Datatables. 
 https://datatables.net/
