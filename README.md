@@ -83,7 +83,7 @@ Los campos name de los input reciben un array con los valores ingresados. Luego 
 ```
 
 En el lado del controlador, se validan los arrays, y se estructuran los datos para la inserción.
-El campo user_id del favorito toma por defecto el id del usuario que está creando el favorito. Si se quisieran crear favoritos para otros usuarios habría que agregar user_id al request, ademas de crear un select con los user_id (capaz con un componente livewire)
+El campo user_id del favorito toma por defecto el id del usuario que está creando el favorito. Si se quisieran crear favoritos para otros usuarios habría que agregar user_id al request, además de crear un select con los user_id (capaz con un componente livewire)
 
 ```php
 public function store(Request $request)
@@ -195,7 +195,7 @@ Los deletes tambien funcionan con Soft Delete en el caso de los usuarios.
 
 ![Users Create View Example](./doc-img/doc-img10.png)
 
-Los usuarios tienen la misma lógica de creación masiva que los favoritos. Se pueden clonar los inputs para crear mas usuarios y la informacion se envia en forma de array inputs
+Los usuarios tienen la misma lógica de creación masiva que los favoritos. Se pueden clonar los inputs para crear mas usuarios y la información se envía en forma de array inputs
 
 ```html
 <form action="{{ route('users.store') }}" method="POST" class="max-w-5xl mx-auto">
@@ -224,7 +224,7 @@ Los usuarios tienen la misma lógica de creación masiva que los favoritos. Se p
 ```
 
 Del lado del controlador están las validaciones y estructuración del array para el insert.
-En este punto, tengo que admitir que hice un poquito de trampa en la validación, porque la confirmación del password se hace verificando que los arrays de passwords sean exactamente iguales. Otra mejora a revisar, además del hecho de que sería mejor aislar el coódigo de la validación
+En este punto, tengo que admitir que hice un poco de trampa en la validación, porque la confirmación del password se hace verificando que los arrays de passwords sean exactamente iguales. Otra mejora a revisar, además del hecho de que sería mejor aislar el coódigo de la validación...
 
 ```php
 public function store(Request $request)
@@ -267,7 +267,6 @@ public function store(Request $request)
 Por otro lado, tambien está la posibilidad de registrarse con Jetstream y Fortify. En este caso, incorporé el campo Birthday para el registro
 
 ![Users Register](./doc-img/doc-img11.png)
-
 
 ## License
 
