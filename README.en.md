@@ -7,30 +7,31 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-# ¡Bienvenid@s a mi repositorio!
+# Welcome to my proyect!
 
-[English](./README.en.md)
+[Español](./README.md)
 
-![Home Sitio Web](./doc-img/doc-img1.png)
+![Home View](./doc-img/doc-img1.png)
 
-## Introduccion
+## Introduction
 
-El proyecto consiste en un sistema que permite a usuarios agregar y administrar sus sitios
-favoritos (Favorites), asi como visualizar los favoritos de otros usuarios.
+The project is a Favorite website manager that allows you to create multiple Users and multiple Favorite websites, as well as view other User's Favorites.
 
-Es básicamente un CRUD respaldado por los test de cada método de los controladores y las políticas de acceso, en el caso de Favorites
+It is basically a CRUD, with its corresponding testings.
 
 ![Users Register](./doc-img/doc-img12.png)
 
 ## Favorites
 
 ![Favorites](./doc-img/doc-img2.gif)
-La vista Favorites trae los sitios favoritos de todos los usuarios. Para el buscador y la paginación use la libreria JS Datatables.
+
+Favorites View brings up all the User's Favorites.
+The search input and the pagination was created with Datatables.
 https://datatables.net/
 
-Los usuario pueden ver todos los favoritos, asi como el nombre del usuario que agregó ese favorito, pero solo el dueño del favorito puede modificarlo o eliminarlo.
+Users can see all the Favorites with the owner name but only the Favorite owner can update it or delete it.
 
-A nivel de vista, el ocultamiento del botón para los no dueños lo trabajé con un simple if en el archivo blade
+To hide update and delete buttons I just wrote a conditional view.
 
 ```php
 @if (Auth::user()->id == $favorite->user_id)
@@ -64,8 +65,7 @@ A nivel de vista, el ocultamiento del botón para los no dueños lo trabajé con
 
 ![Favorites Creation](./doc-img/doc-img3.gif)
 
-La vista create permite la creación de múltiples favoritos. Contiene un formulario con un div que se clona al clickear el botón "Add New Form Box". Asi mismo se pueden eliminar los "Form Box" clickeando "Remove Last Form Box".
-Los campos name de los input reciben un array con los valores ingresados. Luego el valor del índice indica a que favorito corresponde.
+The Create view allows the creation of multiple Favorites. The form inputs can be cloned with the "Add new form box" button and can be removed with the "Delete last form box" button.
 
 ```html
 <form action="{{ route('favorites.store') }}" method="POST" class="max-w-md">
@@ -84,8 +84,7 @@ Los campos name de los input reciben un array con los valores ingresados. Luego 
 </form>
 ```
 
-En el lado del controlador, se validan los arrays, y se estructuran los datos para la inserción.
-El campo user_id del favorito toma por defecto el id del usuario que está creando el favorito. Si se quisieran crear favoritos para otros usuarios habría que agregar user_id al request, además de crear un select con los user_id (capaz con un componente livewire)
+Controller storage method validates array inputs and data is formatted for data insertion
 
 ```php
 public function store(Request $request)
@@ -112,13 +111,9 @@ public function store(Request $request)
     }
 ```
 
-En este punto se podrían plantear varias mejoras, como aislar el código de la validación y ser mas restrictivo (agregar mas validaciones además del simple required)
-
 ### Favorites Update
 
-La actualización de registros se puede hacer, a traves de la vista Edit y Show.
-La diferencia es que Edit requiere rellenar todos los campos, mientras que Show, permite la actualización de un campo individual.
-La vista Edit envía los datos al método update, mientras que Show envía los datos a los métodos de cada campo (updateName y updateUrl)
+Favorites can be updated in Edit or Show views. In Edit View all input are required while in Show view only one field input is required to update (updateName y updateUrl)
 
 #### Favorites Edit
 
@@ -130,7 +125,7 @@ La vista Edit envía los datos al método update, mientras que Show envía los d
 
 #### Favorite Update Controller Method
 
-Del lado del controlador se aplica una política de acceso para que solo los dueños de los favoritos puedan modificar.
+On the controller side, an access policy is enforced so only the Favorites owners can update fields.
 
 ```php
 public function update(FavoriteRequest $request, Favorite $favorite)
@@ -161,8 +156,7 @@ public function updateUrl(Request $request, Favorite $favorite)
 
 ![Favorites Destroy Example](./doc-img/doc-img6.gif)
 
-Los registros de borran con Soft Delete.
-Al igual que en los updates, solo el dueño del favorito puede eliminar su favorito
+Soft Deletes is used to delete. Only Favorites owners can delete their Favorite just like the updates.
 
 ```php
 public function destroy(Favorite $favorite)
@@ -177,13 +171,11 @@ public function destroy(Favorite $favorite)
 
 ![Favorites Destroy Example](./doc-img/doc-img7.png)
 
-La vista Users Index funciona igual a la de Favorites. Tiene un buscador y paginación.
-Al igual que en Favorites, se pueden editar los usuario desde la vista Edit (todos los campos) o Show (campos individuales).
+Users Index View is just like the Favorite Index View.
 
 ### Users Updates
 
-En el caso de los usuarios, no hay politica de acceso. Cualquiera puede agregar, editar o eliminar otros usuario. Esto es una posible mejora a revisar. Quizas se podría generar una politica de acceso, como en el caso de los favoritos, o la posibilidad de gestionar accesos por roles de usuarios (por ejemplo que solo el admin pueda modificar y eliminar).
-Los deletes tambien funcionan con Soft Delete en el caso de los usuarios.
+Users do not have an access policy. I should create a user role or access policy Users management.
 
 #### Users Edit
 
@@ -197,7 +189,7 @@ Los deletes tambien funcionan con Soft Delete en el caso de los usuarios.
 
 ![Users Create View Example](./doc-img/doc-img10.png)
 
-Los usuarios tienen la misma lógica de creación masiva que los favoritos. Se pueden clonar los inputs para crear mas usuarios y la información se envía en forma de array inputs
+Users Create View is just like Favorites Create View. 
 
 ```html
 <form action="{{ route('users.store') }}" method="POST" class="max-w-5xl mx-auto">
@@ -225,8 +217,7 @@ Los usuarios tienen la misma lógica de creación masiva que los favoritos. Se p
 </form>
 ```
 
-Del lado del controlador están las validaciones y estructuración del array para el insert.
-En este punto, tengo que admitir que hice un poco de trampa en la validación, porque la confirmación del password se hace verificando que los arrays de passwords sean exactamente iguales. Otra mejora a revisar, además del hecho de que sería mejor aislar el coódigo de la validación...
+On the controller side storage method validates array inputs and data is formatted for data insertion
 
 ```php
 public function store(Request $request)
@@ -266,7 +257,7 @@ public function store(Request $request)
 }
 ```
 
-Por otro lado, tambien está la posibilidad de registrarse con Jetstream y Fortify. En este caso, incorporé el campo Birthday para el registro
+There is also the possibility of registering with Jetstream and Fortify. In this case, I add the Birthday field in the view and Fortify Action.
 
 ![Users Register](./doc-img/doc-img11.png)
 
